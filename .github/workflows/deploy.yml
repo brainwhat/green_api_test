@@ -1,37 +1,47 @@
 name: Deploy to GitHub Pages
 
+# workflow триггерится при пушах в main
+# и просто кнопкой
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
+# токен, который выдается workflow может:
+# читать репу
+# постить в pages
+# аутентифицироваться с pages (для deploy-pages)
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Запускаем деплои по очереди
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
   deploy:
+# Деплоим на бесплатном раннере и окружении pages
+# Сразу создается ссылка
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+# Клонируем репу
       - name: Checkout
         uses: actions/checkout@v4
-
+# Настраиваем Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
-
+# Создаем tarball, чтобы отправить дальше
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
-
+# Деплоим
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
