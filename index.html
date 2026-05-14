@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GREEN-API Test Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <section class="controls">
+            <h1 class="title">GREEN-API</h1>
+
+            <div class="field">
+                <label for="idInstance">idInstance</label>
+                <input type="text" id="idInstance" placeholder="1101000000" autocomplete="off">
+            </div>
+
+            <div class="field">
+                <label for="apiTokenInstance">ApiTokenInstance</label>
+                <input type="password" id="apiTokenInstance" placeholder="Введите токен" autocomplete="off">
+            </div>
+
+            <button class="btn" id="btnGetSettings">getSettings</button>
+            <button class="btn" id="btnGetStateInstance">getStateInstance</button>
+
+            <div class="group">
+                <div class="field">
+                    <label for="phoneMessage">Номер получателя (формат: 79991234567)</label>
+                    <input type="text" id="phoneMessage" placeholder="79991234567" autocomplete="off">
+                </div>
+                <div class="field">
+                    <label for="messageText">Сообщение</label>
+                    <textarea id="messageText" rows="3" placeholder="Hello, World!"></textarea>
+                </div>
+                <button class="btn" id="btnSendMessage">sendMessage</button>
+            </div>
+
+            <div class="group">
+                <div class="field">
+                    <label for="phoneFile">Номер получателя (формат: 79991234567)</label>
+                    <input type="text" id="phoneFile" placeholder="79991234567" autocomplete="off">
+                </div>
+                <div class="field">
+                    <label for="fileUrl">URL файла</label>
+                    <input type="text" id="fileUrl" placeholder="https://example.com/image.png" autocomplete="off">
+                </div>
+                <button class="btn" id="btnSendFileByUrl">sendFileByUrl</button>
+            </div>
+        </section>
+
+        <section class="response">
+            <div class="response-header">
+                <span class="response-label">Ответ:</span>
+                <button class="btn-clear" id="btnClear" type="button">Очистить</button>
+            </div>
+            <textarea id="responseOutput" readonly placeholder="Здесь появится ответ метода..."></textarea>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
